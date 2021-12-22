@@ -16,7 +16,7 @@
   \****************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"cf5bbcdcaa5c58c06e80c753dbd3e103.png\");\n\n//# sourceURL=webpack://forms_react_redux/./src/world-flag.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"images/world-flag-fb249e0.png\");\n\n//# sourceURL=webpack://forms_react_redux/./src/world-flag.png?");
 
 /***/ }),
 
