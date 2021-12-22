@@ -6,11 +6,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
+        loader: "babel-loader",
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
@@ -41,16 +37,12 @@ module.exports = {
       // loading css
       {
         test: /\.(css)$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: ["style-loader", "css-loader"],
       },
       // loading SASS/SCSS
       {
         test: /\.(s[ca]ss)$/,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "sass-loader" },
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
