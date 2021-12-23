@@ -1,0 +1,57 @@
+@import '../../styles-general/variables.scss';
+
+.header {
+  display: flex;
+  min-height: 8rem;
+  background: $body-color;
+  width: 100%;
+  border-bottom: 1px solid $color-green;
+}
+.logo {
+  background: $color-green;
+  width: 43%;
+  margin-left: auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  &::after {
+    position: absolute;
+    right: -5rem;
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8rem 5rem 0 0;
+    border-color: $color-green transparent transparent transparent;
+  }
+}
+.logo__text {
+  margin-left: auto;
+  padding-right: 1.8rem;
+  color: $color-white;
+  font-size: 3rem;
+  font-weight: 700;
+}
+.nav {
+  display: flex;
+  width: 70%;
+  background: $body-color;
+  align-items: center;
+  padding-left: 6rem;
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.nav__item {
+  color: $color-grey;
+  font-size: 1.8rem;
+  & + & {
+    margin-left: 4rem;
+  }
+}
+

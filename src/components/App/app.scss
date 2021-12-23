@@ -1,0 +1,24 @@
+@import '../../styles-general/variables.scss';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  background-color: $body-color;
+}
+.container {
+  // max-width: $width-content;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
