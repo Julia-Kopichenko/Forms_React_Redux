@@ -1,0 +1,15 @@
+
+.sample{padding:2rem;text-align:center}
+
+.sample{padding:2rem;text-align:center}
+
+.sample{padding:2rem;text-align:center}
+
+.header{display:flex;min-height:8rem;background:#f1f1f1;width:100%;border-bottom:1px solid #19cbac}.logo{background:#19cbac;width:43%;margin-left:auto;max-width:600px;display:flex;justify-content:center;align-items:center;position:relative}.logo::after{position:absolute;right:-5rem;content:"";display:inline-block;width:0;height:0;border-style:solid;border-width:8rem 5rem 0 0;border-color:#19cbac transparent transparent transparent}.logo__text{margin-left:auto;padding-right:1.8rem;color:#fff;font-size:3rem;font-weight:700}.nav{display:flex;width:70%;background:#f1f1f1;align-items:center;padding-left:6rem}.nav__list{display:flex;align-items:center;list-style:none}.nav__item{color:#616362;font-size:1.8rem}.nav__item+.nav__item{margin-left:4rem}
+
+.sample{padding:2rem;text-align:center}
+
+.sample{padding:2rem;text-align:center}
+
+*,*:before,*:after{box-sizing:border-box}*{margin:0;padding:0}html{font-size:10px}body{font-family:"Roboto", sans-serif;overflow-x:hidden;background-color:#f1f1f1}.container{margin:0 auto;padding:0 2rem}
+
