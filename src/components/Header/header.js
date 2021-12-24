@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import "./header.scss";
 
@@ -10,14 +11,24 @@ const Header = () => {
       </div>
       <nav className="nav">
         <ul className="nav__list">
-          <li className="nav__item">Пункт 1</li>
-          <li className="nav__item">Пункт 2</li>
-          <li className="nav__item">Пункт 3</li>
-          <li className="nav__item">Пункт 4</li>
-          <li className="nav__item">Пункт 5</li>
+          <NavLink to="/point1" className="nav__item">
+            Пункт 1
+          </NavLink>
+          <NavLink to="/point2" className="nav__item">
+            Пункт 2
+          </NavLink>
+          <NavLink to="/point3" className="nav__item">
+            Пункт 3
+          </NavLink>
+          <NavLink to="/point4" className="nav__item">
+            Пункт 4
+          </NavLink>
+          <NavLink to="/point5" className="nav__item">
+            Пункт 5
+          </NavLink>
         </ul>
       </nav>
     </div>
   );
 };
-export default Header
+export default Header;
