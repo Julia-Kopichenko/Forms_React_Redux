@@ -5,7 +5,7 @@
   min-height: 8rem;
   background: $body-color;
   width: 100%;
-  border-bottom: 1px solid $color-green;
+  border-bottom: 2px solid $color-green;
 }
 .logo {
   background: $color-green;
@@ -51,9 +51,9 @@
   text-decoration: none;
   color: $color-grey;
   font-size: 1.8rem;
-  padding: 7px 25px;
+  padding: 7px 20px 7px 20px;
   & + & {
-    // margin-left: 2rem;
+    margin-left: 2rem;
   }
   &:hover {
     color: $color-green;
@@ -71,11 +71,11 @@
       top: 2px;
       left: 0;
       z-index: -1;
-      width: 95px;
-      height: 65px;
+      width: 90px;
+      height: 35px;
       background-color: $color-green;
       transform: skew(-30deg);
-      // padding: 0 10px;
+      padding: 0 10px;
     }
     & + .nav__list {
       margin-left: 2rem;
