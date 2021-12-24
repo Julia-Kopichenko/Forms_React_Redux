@@ -1,24 +1,44 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-// import '../../styles/variables.scss'
 import "./header.scss";
 
 const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <div className="logo">
         <div className="logo__text">Городской сайт</div>
       </div>
-      <nav className="nav">
+      <nav className="header__nav nav">
         <ul className="nav__list">
-          <li className="nav__item">Пункт 1</li>
-          <li className="nav__item">Пункт 2</li>
-          <li className="nav__item">Пункт 3</li>
-          <li className="nav__item">Пункт 4</li>
-          <li className="nav__item">Пункт 5</li>
+          <li>
+            <NavLink to="/" className="nav__item">
+              Пункт 1
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/point2" className="nav__item">
+              Пункт 2
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/point3" className="nav__item">
+              Пункт 3
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/point4" className="nav__item">
+              Пункт 4
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/point5" className="nav__item">
+              Пункт 5
+            </NavLink>
+          </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
-export default Header
+export default Header;

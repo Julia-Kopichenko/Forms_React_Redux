@@ -1,4 +1,5 @@
-@import '../../styles-general/variables.scss';
+@import "../../styles-general/variables.scss";
+@import "../../styles-general/normalize.scss";
 
 *,
 *:before,
@@ -9,16 +10,46 @@
   margin: 0;
   padding: 0;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
 html {
   font-size: 10px;
+  height: 100%;
 }
 body {
   font-family: "Roboto", sans-serif;
+  font-size: 1.6rem;
+  height: 100%;
   overflow-x: hidden;
   background-color: $body-color;
 }
+// прижать футер к нижнему краю
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+	margin-top: auto;
+}
+
+
 .container {
-  // max-width: $width-content;
+  max-width: $width-content;
   margin: 0 auto;
   padding: 0 2rem;
 }
