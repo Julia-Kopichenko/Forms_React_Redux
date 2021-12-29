@@ -27,7 +27,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/point4" className="nav__item">
+            <NavLink to="/registration" className="nav__item">
               Пункт 4
             </NavLink>
           </li>

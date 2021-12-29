@@ -1,0 +1,90 @@
+@import "../../styles-general/variables.scss";
+
+.form {
+  background-color: $color-white;
+  padding: 7rem;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  font-size: 1.4rem;
+}
+
+.form-registrashion {
+  display: flex;
+  flex-direction: column;
+  width: 88rem;
+  padding: 4rem 0;
+
+  & h1 {
+    font-size: 4rem;
+    padding: 0 5rem;
+    margin-bottom: 3rem;
+  }
+  & hr {
+    border-top: 1px solid $color-light-grey;
+  }
+  & footer {
+    position: relative;
+    height: 4rem;
+    & .button-submit {
+      position: absolute;
+      left: 32rem;
+      top: 2rem;
+    }
+  }
+}
+
+.bloc-tabs {
+  display: flex;
+  padding: 0 25px;
+}
+.tabs {
+  background-color: $color-white;
+  font-size: 1.8rem;
+  color: $color-light-grey;
+  padding: 15px 30px;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+}
+.active-tabs {
+  color: $color-green;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 2px);
+    height: 4px;
+    background: $color-green;
+  }
+}
+
+.content-tabs {
+  flex-grow: 1;
+}
+.content {
+  background: white;
+  padding: 20px;
+  // width: 100%;
+  height: 100%;
+  display: none;
+}
+.content h2 {
+  padding: 0px 0 5px 0px;
+}
+.content hr {
+  width: 100px;
+  height: 2px;
+  background: #222;
+  margin-bottom: 5px;
+}
+.content p {
+  width: 100%;
+  height: 100%;
+}
+.active-content {
+  display: block;
+}

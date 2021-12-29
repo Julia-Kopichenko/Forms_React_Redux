@@ -44,9 +44,8 @@ body {
   flex-direction: column;
 }
 .footer {
-	margin-top: auto;
+  margin-top: auto;
 }
-
 
 .container {
   max-width: $width-content;
@@ -54,21 +53,28 @@ body {
   padding: 0 2rem;
 }
 .main-content {
-  padding-top: 7rem;
+  & .form-wayregistrashion {
+    margin-top: 7rem;
+  }
+  & .form-registrashion {
+    margin-top: 4rem;
+  }
 }
-.button {
+button {
+  border: none;
+  cursor: pointer;
+}
+.button-submit {
   min-width: 10rem;
   padding: 1.1rem;
   text-decoration: none;
   text-align: center;
-  cursor: pointer;
   border-radius: 0.4rem;
-  border: none;
   background: $color-green;
   color: $color-white;
   font-size: 1.8rem;
   box-shadow: 0 2px 0 $color-green-shadow;
-  transition: .3s;
+  transition: 0.3s;
   &:hover {
     background-color: $color-green-shadow;
   }

@@ -3,21 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 
-import RadioButton from "../RadioButton";
+import RadioButton from "../../components/RadioButton";
 
-import "./form1.scss";
+import "./FormRegistrashion.scss";
 
-const Form1 = () => {
+const FormRegistrashion = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="form form-registrashion">
+    <div className="form form-wayregistrashion">
       <h1>Выберете способ регистрации:</h1>
 
       <Formik
         initialValues={{ picked: "personal" }}
         onSubmit={({ picked }) => {
-          picked === "personal" ? navigate("/") : navigate("/point2");
+          picked === "personal"
+            ? navigate("/registration/personal")
+            : navigate("/registration/public");
         }}
       >
         {({ values }) => (
@@ -38,7 +40,7 @@ const Form1 = () => {
               <div className="list">Загрузить список</div>
             ) : null}
 
-            <button type="submit" className="button">
+            <button type="submit" className="button-submit">
               Далее
             </button>
           </Form>
@@ -47,4 +49,4 @@ const Form1 = () => {
     </div>
   );
 };
-export default Form1;
+export default FormRegistrashion;
