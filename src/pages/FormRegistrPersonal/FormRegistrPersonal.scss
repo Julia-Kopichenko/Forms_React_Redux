@@ -13,14 +13,36 @@
   width: 88rem;
   padding: 4rem 0;
 
+  &__content {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__fields {
+    padding: 3rem;
+  }
+
+  & form {
+    position: relative;
+
+    & .button-submit {
+      
+    }
+  }
+
   & h1 {
     font-size: 4rem;
     padding: 0 5rem;
     margin-bottom: 3rem;
   }
+
   & hr {
     border-top: 1px solid $color-light-grey;
   }
+
   & footer {
     position: relative;
     height: 4rem;
@@ -62,29 +84,3 @@
   }
 }
 
-.content-tabs {
-  flex-grow: 1;
-}
-.content {
-  background: white;
-  padding: 20px;
-  // width: 100%;
-  height: 100%;
-  display: none;
-}
-.content h2 {
-  padding: 0px 0 5px 0px;
-}
-.content hr {
-  width: 100px;
-  height: 2px;
-  background: #222;
-  margin-bottom: 5px;
-}
-.content p {
-  width: 100%;
-  height: 100%;
-}
-.active-content {
-  display: block;
-}

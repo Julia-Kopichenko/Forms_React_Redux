@@ -36,9 +36,13 @@ const Tabs = () => {
         </div>
       </header>
       <hr />
-      <div className="content-tabs">
+      <div className="form-registrashion__content">
         <div
-          className={toggleState === 1 ? "content  active-content" : "content"}
+          className={
+            toggleState === 1
+              ? "content  form-registrashion__content--active"
+              : "content"
+          }
         >
           <h2>Content 1</h2>
           <hr />
@@ -50,7 +54,11 @@ const Tabs = () => {
         </div>
 
         <div
-          className={toggleState === 2 ? "content  active-content" : "content"}
+          className={
+            toggleState === 2
+              ? "content  form-registrashion__content--active"
+              : "content"
+          }
         >
           <h2>Content 2</h2>
           <hr />
@@ -61,7 +69,11 @@ const Tabs = () => {
         </div>
 
         <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
+          className={
+            toggleState === 3
+              ? "content  form-registrashion__content--active"
+              : "content"
+          }
         >
           <h2>Content 3</h2>
           <hr />

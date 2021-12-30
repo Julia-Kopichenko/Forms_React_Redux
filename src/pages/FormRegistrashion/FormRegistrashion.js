@@ -22,29 +22,31 @@ const FormRegistrashion = () => {
             : navigate("/registration/public");
         }}
       >
-        {({ values }) => (
-          <Form>
-            <div className="radio-group">
-              <RadioButton
-                value="personal"
-                label="Персональная"
-                name="picked"
-              />
-              <RadioButton
-                label="Регистрация пользователей списком"
-                name="picked"
-                value="public"
-              />
-            </div>
-            {values.picked === "public" ? (
-              <div className="list">Загрузить список</div>
-            ) : null}
+        {({ values }) => {
+          return (
+            <Form>
+              <div className="radio-group">
+                <RadioButton
+                  value="personal"
+                  label="Персональная"
+                  name="picked"
+                />
+                <RadioButton
+                  label="Регистрация пользователей списком"
+                  name="picked"
+                  value="public"
+                />
+              </div>
+              {values.picked === "public" ? (
+                <div className="list">Загрузить список</div>
+              ) : null}
 
-            <button type="submit" className="button-submit">
-              Далее
-            </button>
-          </Form>
-        )}
+              <button type="submit" className="button-submit">
+                Далее
+              </button>
+            </Form>
+          );
+        }}
       </Formik>
     </div>
   );
