@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import RadioButton from "../../../components/RadioButton";
 import { Fragment } from "react";
+import styled from "styled-components";
+
 
 const FormOwnData = () => {
   return (
@@ -24,8 +26,7 @@ const FormOwnData = () => {
       // метод, кот.будет вызывать ф-цию во время отправки формы
       onSubmit={(values) => {
         console.log(values);
-      }}
-    >
+      }}>
       {({
         values,
         errors,
@@ -46,8 +47,7 @@ const FormOwnData = () => {
               <label htmlFor="lastName">Last Name</label>
               <Field id="lastName" name="lastName" placeholder="Doe" />
             </div>
-            <hr />
-            
+            <Hr />
 
             <button type="submit" className="button-submit">
               Далее
@@ -60,6 +60,10 @@ const FormOwnData = () => {
 };
 
 export default FormOwnData;
+
+const Hr = styled.hr`
+  border-top: 1px solid ${({ theme }) => theme.colors.grey};
+`;
 
 // touched - параметр, кот. показывает взаимодействовали ли мы с полем ранее
 // handleChange - вызыв. каждый раз, когда мы меняем значение формы
