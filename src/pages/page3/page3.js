@@ -12,16 +12,16 @@ const STabList = styled(TabList)`
 STabList.tabsRole = "TabList";
 
 const STab = styled(Tab)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colorWhite};
   font-size: 1.8rem;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colorGrey};
   padding: 15px 30px;
   cursor: pointer;
   user-select: none;
 
   &.is-selected {
-    color: ${({ theme }) => theme.colors.green};
-    border-bottom: 4px solid ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colorGreen};
+    border-bottom: 4px solid ${({ theme }) => theme.colorGreen};
   }
 
   &:focus {

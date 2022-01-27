@@ -39,15 +39,15 @@ const StyledNav = styled.nav`
   }
 
   & li a {
-    color: ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colorGrey};
     font-size: 1.8rem;
     padding: 8px 20px;
-   
+
     &:hover {
-      color: ${({ theme }) => theme.colors.green};
+      color: ${({ theme }) => theme.colorGreen};
     }
     &.active {
-      color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.colorWhite};
       position: relative;
       overflow: hidden;
       z-index: 10;
@@ -59,7 +59,7 @@ const StyledNav = styled.nav`
         z-index: -1;
         width: 85px;
         height: 35px;
-        background-color: ${({ theme }) => theme.colors.green};
+        background-color: ${({ theme }) => theme.colorGreen};
         transform: skew(-30deg);
         padding: 0 10px;
       }

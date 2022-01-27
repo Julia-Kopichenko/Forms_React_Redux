@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 export const GlobalStyles = createGlobalStyle`
 * {
   margin: 0;
@@ -27,7 +28,7 @@ body {
   font-size: 1.6rem;
   height: 100vh;
   overflow-x: hidden;
-  background-color: ${({theme}) => theme.colors.body};
+  background-color: ${({ theme }) => theme.colorBody};
 }
 ul {
   list-style: none;
@@ -35,4 +36,11 @@ ul {
 a {
   text-decoration: none;
 }
+hr {
+    display: block;
+    border: none;
+    border-top: 1px solid ${({ theme }) => theme.colorGreyLight};
+    /* margin-top: 1.5rem; */
+    /* margin-bottom: 1.5rem; */
+  }
 `;

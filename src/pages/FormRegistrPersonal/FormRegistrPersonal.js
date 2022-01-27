@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import FormWrapper from "../../components/FormWrapper";
 import FormOwnData from "./FormOwnData/FormOwnData";
+import { FormTitle } from "../../components/Typography/Typography";
 
 const FormRegistrPersonal = () => {
   return (
@@ -18,8 +19,10 @@ const FormRegistrPersonal = () => {
             <STab>Данные кредитной карты</STab>
             <STab>Результат</STab>
           </STabList>
-          <Hr />
-          <STabPanel><FormOwnData /></STabPanel>
+          <hr />
+          <STabPanel>
+            <FormOwnData />
+          </STabPanel>
           <STabPanel>Panel 2</STabPanel>
           <STabPanel>Panel 3</STabPanel>
         </STabs>
@@ -39,17 +42,17 @@ const STabList = styled(TabList)`
 STabList.tabsRole = "TabList";
 
 const STab = styled(Tab)`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colorWhite};
   font-size: 1.8rem;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colorGreyLight};
   padding: 15px 0;
   margin-right: 60px;
   cursor: pointer;
   user-select: none;
 
   &.is-selected {
-    color: ${({ theme }) => theme.colors.green};
-    border-bottom: 4px solid ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colorGreen};
+    border-bottom: 4px solid ${({ theme }) => theme.colorGreen};
   }
 
   &:focus {
@@ -69,16 +72,6 @@ const STabPanel = styled(TabPanel)`
 `;
 STabPanel.tabsRole = "TabPanel";
 
-
-const Hr = styled.hr`
-  border-top: 1px solid ${({ theme }) => theme.colors.grey};
-`;
-
-const FormTitle = styled.h2`
-  font-size: 40px;
-  font-weight: 400;
-`;
-
 const StyledFormRegPersonal = styled.div`
   ${FormWrapper} {
     margin-top: 35px;
@@ -87,12 +80,12 @@ const StyledFormRegPersonal = styled.div`
   ${FormTitle},
   ${STabList},
   ${STabPanel} {
-    padding: 0 40px;
+    padding: 0 50px;
   }
   ${FormTitle} {
     margin-bottom: 25px;
   }
   ${STabPanel} {
-    padding-top: 40px;
+    padding-top: 35px;
   }
 `;

@@ -1,9 +1,13 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import RadioButton from "../../../components/RadioButton";
-import { Fragment } from "react";
+// import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
+import { Button } from "../../../components/Forms/Button";
+import { Label } from "../../../components/Forms/Label";
+// import { MyInput } from "../../../components/Forms/Input";
 
+import { Text } from "../../../components/Typography/Typography";
+import { Flex } from "../../../components/Flex";
 
 const FormOwnData = () => {
   return (
@@ -21,9 +25,9 @@ const FormOwnData = () => {
         info: "",
         friendsEmail: "",
       }}
-      // форма б-т валидироваться при переходе на след.поле
-      // validateOnBlur
-      // метод, кот.будет вызывать ф-цию во время отправки формы
+      validateOnBlur
+      // форма б-т валидироваться при переходе на след.поле (validateOnBlur)
+      // метод, кот.будет вызывать ф-цию во время отправки формы (onSubmit)
       onSubmit={(values) => {
         console.log(values);
       }}>
@@ -35,23 +39,25 @@ const FormOwnData = () => {
         isValid,
         handleBlur,
         handleSubmit,
+        dirty
       }) => {
         return (
           <Form>
-            <div className="form-registrashion__fields">
-              <p>Все поля формы обязательны для заполнения</p>
+            <Text fontSize="12px">
+              Все поля формы обязательны для заполнения
+            </Text>
 
-              <label htmlFor="firstName">First Name</label>
-              <Field id="firstName" name="firstName" placeholder="Jane" />
+            <Flex justify="space-between" width="87%">
+              <Label htmlFor="firstName">Имя:</Label>
+              {/* <Field id="firstName" name="firstName" placeholder="Василий" /> */}
+              <Field id="firstName" name="firstName" placeholder="Василий" component={MyInput}/>
+            </Flex>
 
-              <label htmlFor="lastName">Last Name</label>
-              <Field id="lastName" name="lastName" placeholder="Doe" />
-            </div>
-            <Hr />
+            <Label htmlFor="lastName">Фамилия:</Label>
+            <Field id="lastName" name="lastName" placeholder="Лоханкин" />
+            <hr />
 
-            <button type="submit" className="button-submit">
-              Далее
-            </button>
+            <Button type="submit">Далее</Button>
           </Form>
         );
       }}
@@ -61,12 +67,26 @@ const FormOwnData = () => {
 
 export default FormOwnData;
 
-const Hr = styled.hr`
-  border-top: 1px solid ${({ theme }) => theme.colors.grey};
-`;
+const MyInput = ({ field, form, ...props }) => {
+  return <input {...field} {...props} />;
+};
 
 // touched - параметр, кот. показывает взаимодействовали ли мы с полем ранее
 // handleChange - вызыв. каждый раз, когда мы меняем значение формы
 // handleBlur - вызыв. каждый раз, когда мы уходим из значения формы
 // isValid - говорит валидна ли форма в данный момент или нет
 // handleSubmit - привязывается к кнопке отправки формы, он б-т вызывать функцию onSubmit
+// dirty - параметр, который говорит изменялись ли когда-нибудь параметры в форме
+
+/*
+<input
+  type={"text"}
+  name={"lastName"}
+  onChange={handleChange}
+  omBlur={handleBlur}
+  value={values.name}
+>
+</input>
+*/
+// type={"text"} - не обязательное поле
+// name="lastName" - обязательое поле, которое должно соппадать с именами объектов initialValues

@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 
-import RadioButton from "../../components/RadioButton";
-import Button from "../../components/Buttons";
+import { Button } from "../../components/Forms/Button";
+import { Text } from "../../components/Typography/Typography";
+import RadioButton from "../../components/Forms/RadioButton";
 import FormWrapper from "../../components/FormWrapper";
 
 const FormRegistrashion = () => {
@@ -14,7 +15,7 @@ const FormRegistrashion = () => {
   return (
     <StyledFormRegistrashion>
       <FormWrapper width="300px">
-        <FormTitle>Выберите способ регистрации:</FormTitle>
+        <Text>Выберите способ регистрации:</Text>
 
         <Formik
           initialValues={{ picked: "personal" }}
@@ -55,19 +56,13 @@ const FormRegistrashion = () => {
 };
 export default FormRegistrashion;
 
-const FormTitle = styled.h2`
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-`;
-
 export const StyledFormRegistrashion = styled.div`
   ${FormWrapper} {
     margin: 0 auto;
     margin-top: 70px;
     padding: 65px 60px;
   }
-  ${FormTitle} {
+  ${Text} {
     margin-bottom: 20px;
   }
   & form {

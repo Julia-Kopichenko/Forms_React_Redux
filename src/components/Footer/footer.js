@@ -33,9 +33,9 @@ const Footer = () => {
 export default Footer;
 
 const StyledFooter = styled.footer`
-  border-top: 1px solid ${({ theme }) => theme.colors.grey};
+  border-top: 1px solid ${({ theme }) => theme.colorGrey};
   font-size: 1.4rem;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colorGrey};
   & nav {
     width: 70%;
     padding-left: 30px;
@@ -49,10 +49,10 @@ const StyledNav = styled.nav`
   }
 
   & li a {
-    color: ${({ theme }) => theme.colors.grey};
+    color: ${({ theme }) => theme.colorGrey};
     padding-right: 35px;
     &:hover {
-      color: ${({ theme }) => theme.colors.green};
+      color: ${({ theme }) => theme.colorGreen};
     }
     &.active {
     }

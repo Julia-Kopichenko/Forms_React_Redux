@@ -38,9 +38,9 @@ const RadioButtonLabel = styled.div`
     left: 0;
     width: 16px;
     height: 16px;
-    border: 1px solid ${({ theme }) => theme.colors.grey};
+    border: 1px solid ${({ theme }) => theme.colorGrey};
     border-radius: 50%;
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) => theme.colorWhite};
   }
 
   &:after {
@@ -51,7 +51,7 @@ const RadioButtonLabel = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.colors.black};
+    background: ${({ theme }) => theme.colorBlack};
     opacity: 0;
     transition: 0.2s;
   }
