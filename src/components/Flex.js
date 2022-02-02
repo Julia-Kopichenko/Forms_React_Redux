@@ -7,7 +7,7 @@ const StyledFlex = styled.div`
   align-items: ${(props) => props.align || "center"};
   justify-content: ${(props) => props.justify || "center"};
   margin: ${({ margin }) => margin || "0"};
-  max-width: ${({ width }) => width || "100%"};
+  width: ${({ width }) => width || "100%"};
 `;
 
 export const Flex = (props) => {

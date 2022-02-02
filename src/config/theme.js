@@ -1,6 +1,7 @@
 export const colorBody = "#f1f1f1";
 
 export const colorGreen = "rgb(10%, 80%, 67%, 0.8)";
+export const colorError = "red";
 
 export const colorGrey = "#616362";
 export const colorGreyLight = "#a0aca6b9";
