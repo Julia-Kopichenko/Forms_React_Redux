@@ -1,27 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsPersonalPage } from "../../redux/actionCreators";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
-
 import { Button } from "../../components/Forms/Button";
 import { Text } from "../../components/Typography/Typography";
 import RadioButton from "../../components/Forms/RadioButton";
 import FormWrapper from "../../components/FormWrapper";
+import { PATH_NAME } from "../../constants/pathNames";
 
 const FormRegistrashion = () => {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const url = useLocation();
+  const navigate = useNavigate();
   return (
     <StyledFormRegistrashion>
       <FormWrapper width="300px">
         <Text>Выберите способ регистрации:</Text>
-
         <Formik
           initialValues={{ picked: "personal" }}
           onSubmit={({ picked }) => {
             {
-              picked === "personal" && navigate("/registration/personal");
+              picked === "personal" &&
+                dispatch(setIsPersonalPage(true)) &&
+                navigate(PATH_NAME.registration_personal);
             }
             {
               picked === "public" && navigate("/registration/public");
@@ -40,11 +45,9 @@ const FormRegistrashion = () => {
                   label="Регистрация пользователей списком"
                   name="picked"
                 />
-
                 {values.picked === "public" && (
                   <div className="list">Загрузить список</div>
                 )}
-
                 <Button type="submit">Далее</Button>
               </Form>
             );

@@ -10,6 +10,7 @@ const ErrorText = styled.div`
   position: absolute;
   top: -15px;
 `;
+
 const InputWrapper = styled.div`
   position: relative;
 `;
@@ -60,7 +61,7 @@ const StyledInput = styled.input`
     `}
 `;
 
-export const MyInput = ({ form: { touched, errors }, field, ...props }) => {
+const MyInput = ({ form: { touched, errors }, field, ...props }) => {
   return (
     <>
       {touched[field.name] && errors[field.name] && (

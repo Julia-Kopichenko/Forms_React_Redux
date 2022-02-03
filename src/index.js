@@ -1,16 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 import { ThemeProvider } from "styled-components";
 // import { theme } from "./styles-general/Theme";
-import * as theme from './config/theme'
+import * as theme from "./config/theme";
 import { GlobalStyles } from "./styles-general/Global";
 import App from "./components/App";
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <App />
-  </ThemeProvider>,
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <App />
+    </ThemeProvider>
+  </Provider>,
+
   document.getElementById("root")
 );
 

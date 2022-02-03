@@ -5,4 +5,16 @@ import Page5 from "./page5/page5";
 import FormRegistrashion from "./FormRegistrashion";
 import FormRegistrPersonal from "./FormRegistrPersonal/FormRegistrPersonal";
 
-export { Page1, Page2, Page3, Page5, FormRegistrashion, FormRegistrPersonal };
+import FormOwnData from "./FormRegistrPersonal/FormOwnData/FormOwnData";
+import FormCreditCard from "./FormRegistrPersonal/FormCreditCard/FormCreditCard";
+
+export {
+  Page1,
+  Page2,
+  Page3,
+  Page5,
+  FormRegistrashion,
+  FormRegistrPersonal,
+  FormOwnData,
+  FormCreditCard,
+};

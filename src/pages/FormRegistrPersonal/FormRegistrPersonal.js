@@ -3,89 +3,82 @@ import styled from "styled-components";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import FormWrapper from "../../components/FormWrapper";
 import FormOwnData from "./FormOwnData/FormOwnData";
+import { FormCreditCard } from "..";
 import { FormTitle } from "../../components/Typography/Typography";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { PATH_NAME } from "../../constants/pathNames";
 
 const FormRegistrPersonal = () => {
+  const url = useLocation().pathname;
+  const isPersonalDataPage = url === PATH_NAME.registration_personal;
+  const isCreditCardDataPage = url === PATH_NAME.registration_personal_card;
+  const isResultDataPage = url === PATH_NAME.registration_personal_result;
+
   return (
     <StyledFormRegPersonal>
       <FormWrapper>
         <FormTitle>Типовая форма</FormTitle>
+        <MyTabList>
+          <MyTab className={isPersonalDataPage && "is-selected"}>
+            Личные данные
+          </MyTab>
+          <MyTab className={isCreditCardDataPage && "is-selected"}>
+            Данные кредитной карты
+          </MyTab>
+          <MyTab className={isResultDataPage && "is-selected"}>Результат</MyTab>
+        </MyTabList>
+        <hr />
+        <MyContent>
+          {isPersonalDataPage && <FormOwnData />}
+          {isCreditCardDataPage && <FormCreditCard />}
+        </MyContent>
 
-        <STabs
-          selectedTabClassName="is-selected"
-          selectedTabPanelClassName="is-selected">
-          <STabList>
-            <STab>Личные данные</STab>
-            <STab>Данные кредитной карты</STab>
-            <STab>Результат</STab>
-          </STabList>
-          <hr />
-          <STabPanel>
-            <FormOwnData />
-          </STabPanel>
-          <STabPanel>Panel 2</STabPanel>
-          <STabPanel>Panel 3</STabPanel>
-        </STabs>
+        {/* <Outlet />
+        <Routes>
+          <Route
+            path={PATH_NAME.registration_personal_card}
+            element={<FormCreditCard />}
+          />
+        </Routes> */}
       </FormWrapper>
     </StyledFormRegPersonal>
   );
 };
-
 export default FormRegistrPersonal;
 
-const STabs = styled(Tabs)``;
-
-const STabList = styled(TabList)`
+const MyTabList = styled.ul`
   display: flex;
   margin: 0;
 `;
-STabList.tabsRole = "TabList";
-
-const STab = styled(Tab)`
+const MyTab = styled.li`
   background-color: ${({ theme }) => theme.colorWhite};
   font-size: 1.8rem;
   color: ${({ theme }) => theme.colorGreyLight};
   padding: 15px 0;
   margin-right: 60px;
-  cursor: pointer;
-  user-select: none;
-
   &.is-selected {
     color: ${({ theme }) => theme.colorGreen};
     border-bottom: 4px solid ${({ theme }) => theme.colorGreen};
   }
-
-  &:focus {
-    outline: none;
-  }
 `;
-STab.tabsRole = "Tab";
-
-const STabPanel = styled(TabPanel)`
-  display: none;
+const MyContent = styled.div`
   height: 100%;
   padding: 20px 0;
-
-  &.is-selected {
-    display: block;
-  }
 `;
-STabPanel.tabsRole = "TabPanel";
-
 const StyledFormRegPersonal = styled.div`
   ${FormWrapper} {
     margin-top: 35px;
     padding: 40px 0;
   }
   ${FormTitle},
-  ${STabList},
-  ${STabPanel} {
+  ${MyTabList},
+  ${MyContent} {
     padding: 0 50px;
   }
   ${FormTitle} {
     margin-bottom: 25px;
   }
-  ${STabPanel} {
+  ${MyContent} {
     padding-top: 35px;
   }
 `;

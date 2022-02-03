@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path"); //!
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -30,13 +31,17 @@ const getPlugins = () => {
 module.exports = () => {
   return {
     mode: isProd ? "production" : isDev && "development",
-
+    // entry: './index.js',
     output: {
       filename: isProd ? "main-[hash:8].js" : undefined,
+      publicPath: "/", //!
+      path: path.resolve(__dirname, "dist"), //!
+      // path: path.join(__dirname, dist)
     },
     devServer: {
       historyApiFallback: true,
-      static: './',
+      // static: './',
+      static: "./",
       port: 8080,
       hot: isDev,
     },

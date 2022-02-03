@@ -17,7 +17,7 @@ const Nav = () => {
           <NavLink to={PATH_NAME.point3}>Пункт 3</NavLink>
         </li>
         <li>
-          <NavLink to={PATH_NAME.point4}>Пункт 4</NavLink>
+          <NavLink to={PATH_NAME.registration}>Пункт 4</NavLink>
         </li>
         <li>
           <NavLink to={PATH_NAME.point5}>Пункт 5</NavLink>

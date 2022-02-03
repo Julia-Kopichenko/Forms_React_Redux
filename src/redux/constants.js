@@ -1,0 +1,1 @@
+export const SET_IS_PERSONAL_PAGE = "SET_IS_PERSONAL_PAGE";

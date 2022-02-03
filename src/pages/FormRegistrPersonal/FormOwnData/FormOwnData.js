@@ -1,15 +1,18 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
 import { Button } from "../../../components/Forms/Button";
-import { Label } from "../../../components/Forms/Label";
-import { MyInput, MyTextInput } from "../../../components/Forms/Input";
+import { MyTextInput } from "../../../components/Forms/TextInput";
 import { Text } from "../../../components/Typography/Typography";
 import { Flex } from "../../../components/Flex";
+import { PATH_NAME } from "../../../constants/pathNames";
 
 const FormOwnData = () => {
+  const navigate = useNavigate();
+
   const validationSchema = yup.object().shape({
     firstName: yup
       .string()
@@ -47,6 +50,7 @@ const FormOwnData = () => {
         // метод, кот.будет вызывать ф-цию во время отправки формы (onSubmit)
         onSubmit={(values) => {
           console.log(values);
+          navigate(PATH_NAME.registration_personal_card)
         }}>
         {({
           values,
@@ -61,7 +65,7 @@ const FormOwnData = () => {
           return (
             <Form>
               <Text fontSize="12px" margin="0 0 25px 0">
-                Все поля формы обязательны для заполнения
+                Все поля формы обязательны для заполнения!!!
               </Text>
               <Flex direction="column" width="87%">
                 <MyTextInput name="firstName" label="Имя:"></MyTextInput>
@@ -71,7 +75,11 @@ const FormOwnData = () => {
 
               <hr />
 
-              <Button type="submit" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                // disabled={!isValid && !dirty}
+                >
                 Далее
               </Button>
             </Form>
@@ -106,8 +114,8 @@ const StyledFormOwnData = styled.div`
 // touched - параметр, кот. показывает взаимодействовали ли мы с полем ранее
 // handleChange - вызыв. каждый раз, когда мы меняем значение формы
 // handleBlur - вызыв. каждый раз, когда мы уходим из значения формы
-// isValid - говорит валидна ли форма в данный момент или нет
 // handleSubmit - привязывается к кнопке отправки формы, он б-т вызывать функцию onSubmit
+// isValid - говорит валидна ли форма в данный момент или нет
 // dirty - параметр, который говорит изменялись ли когда-нибудь параметры в форме
 
 /*
@@ -122,12 +130,3 @@ const StyledFormOwnData = styled.div`
 */
 // type={"text"} - не обязательное поле
 // name="lastName" - обязательое поле, которое должно соппадать с именами объектов initialValues
-/*
-<button
-  disabled={!isValid && !dirty}
-  onClick={handleSubmit}
-  type="submit"
->
-</button>
-*/
-// кнопка недоступна, если isValid=false и dirty=false т.е.мы никогда не меняли значение формы
