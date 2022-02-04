@@ -27,8 +27,7 @@ const StyledInput = styled.input`
 
   &:focus,
   &:active {
-    box-shadow: rgb(210, 213, 217) 0px 0px 1px 1px,
-      rgb(227, 230, 232) 0px 0px 0px 2px;
+    box-shadow: rgb(210, 213, 217) 0 0 1px 1px, rgb(227, 230, 232) 0 0 0 2px;
     border: 1px solid ${({ theme }) => theme.colorGreyLight};
     outline: none;
   }
@@ -40,8 +39,8 @@ const StyledInput = styled.input`
       &:focus,
       &:active {
         border: 1px solid ${({ theme }) => theme.colorGreen};
-        box-shadow: ${({ theme }) => theme.colorGreen} 0px 0px 2px 1px,
-          rgb(177, 247, 160) 0px 0px 0px 2px;
+        box-shadow: ${({ theme }) => theme.colorGreen} 0 0 2px 1px,
+          rgb(177, 247, 160) 0 0 0 2px;
         outline: none;
       }
     `}
@@ -54,8 +53,7 @@ const StyledInput = styled.input`
 
       &:focus,
       &:active {
-        box-shadow: rgb(244, 129, 116) 0px 0px 2px 1px,
-          rgb(251, 178, 174) 0px 0px 0px 3px;
+        box-shadow: rgb(244, 129, 116) 0 0 2px 1px, rgb(251, 178, 174) 0 0 0 3px;
         outline: none;
       }
     `}

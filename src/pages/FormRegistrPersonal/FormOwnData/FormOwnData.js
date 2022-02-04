@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsAvailablePage } from "../../../redux/actionCreators";
 import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
@@ -11,6 +13,8 @@ import { Flex } from "../../../components/Flex";
 import { PATH_NAME } from "../../../constants/pathNames";
 
 const FormOwnData = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   const validationSchema = yup.object().shape({
@@ -49,6 +53,7 @@ const FormOwnData = () => {
         // форма б-т валидироваться при переходе на след.поле (validateOnBlur)
         // метод, кот.будет вызывать ф-цию во время отправки формы (onSubmit)
         onSubmit={(values) => {
+          dispatch(setIsAvailablePage('creditCardDataPage', true))
           console.log(values);
           navigate(PATH_NAME.registration_personal_card)
         }}>

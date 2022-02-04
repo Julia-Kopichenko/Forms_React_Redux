@@ -1,6 +1,11 @@
-import { SET_IS_PERSONAL_PAGE } from "./constants";
+import { SET_IS_AVAILABLE_PAGE } from "./constants";
 
-export const setIsPersonalPage = (boolean) => ({
-  type: SET_IS_PERSONAL_PAGE,
-  payload: boolean,
+export const setIsAvailablePage = (page, boolean) => ({
+  type: SET_IS_AVAILABLE_PAGE,
+  payload: {
+    page,
+    boolean
+  },
 });
+
+

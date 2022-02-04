@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { setIsPersonalPage } from "../../redux/actionCreators";
+import { setIsAvailablePage } from "../../redux/actionCreators";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
@@ -25,7 +25,7 @@ const FormRegistrashion = () => {
           onSubmit={({ picked }) => {
             {
               picked === "personal" &&
-                dispatch(setIsPersonalPage(true)) &&
+                dispatch(setIsAvailablePage('personalPage', true)) &&
                 navigate(PATH_NAME.registration_personal);
             }
             {

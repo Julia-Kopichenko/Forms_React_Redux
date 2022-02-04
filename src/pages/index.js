@@ -4,6 +4,7 @@ import Page3 from "./page3/page3";
 import Page5 from "./page5/page5";
 import FormRegistrashion from "./FormRegistrashion";
 import FormRegistrPersonal from "./FormRegistrPersonal/FormRegistrPersonal";
+import FormResults from "./FormRegistrPersonal/FormResults/FormResults";
 
 import FormOwnData from "./FormRegistrPersonal/FormOwnData/FormOwnData";
 import FormCreditCard from "./FormRegistrPersonal/FormCreditCard/FormCreditCard";
@@ -17,4 +18,5 @@ export {
   FormRegistrPersonal,
   FormOwnData,
   FormCreditCard,
+  FormResults
 };
