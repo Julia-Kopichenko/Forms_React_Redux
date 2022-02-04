@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex } from "../Flex";
-import { ContentWrapper } from "../../styles-general/ContentWrapper.styled";
+import { ContentWrapper } from "../../styles-general/ContentWrapper";
 import { StyledHeader, TitleWrapper, Title } from "./Header.styled";
 import Nav from "./Nav";
 

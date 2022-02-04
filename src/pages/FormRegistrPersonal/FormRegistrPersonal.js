@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import FormWrapper from "../../components/FormWrapper";
-import FormOwnData from "./FormOwnData/FormOwnData";
-import { FormCreditCard } from "..";
 import { FormTitle } from "../../components/Typography/Typography";
-import { Outlet, Route, Routes, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { PATH_NAME } from "../../constants/pathNames";
 
 const FormRegistrPersonal = () => {
@@ -29,17 +26,8 @@ const FormRegistrPersonal = () => {
         </MyTabList>
         <hr />
         <MyContent>
-          {isPersonalDataPage && <FormOwnData />}
-          {isCreditCardDataPage && <FormCreditCard />}
+          <Outlet />
         </MyContent>
-
-        {/* <Outlet />
-        <Routes>
-          <Route
-            path={PATH_NAME.registration_personal_card}
-            element={<FormCreditCard />}
-          />
-        </Routes> */}
       </FormWrapper>
     </StyledFormRegPersonal>
   );

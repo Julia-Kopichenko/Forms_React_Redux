@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { NavLink } from "react-router-dom";
-import { ContentWrapper } from "../../styles-general/ContentWrapper.styled";
+import { ContentWrapper } from "../../styles-general/ContentWrapper";
 import { Flex } from "../Flex";
 
 const Footer = () => {

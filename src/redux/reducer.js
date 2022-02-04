@@ -1,11 +1,23 @@
-import { SET_IS_AVAILABLE_PAGE } from "./constants";
-import { SET_IS_OWN_DATA_DONE } from "./constants";
+import { SET_IS_AVAILABLE_PAGE, SET_OWN_DATA } from "./constants";
 
 const initialState = {
   isAvailablePages: {
     personalPage: false,
     creditCardDataPage: false,
     resultDataPage: false,
+  },
+  userOwnData: {
+    firstName: "",
+    lastName: "",
+    patronymic: "",
+    dateOfBirthday: "",
+    gender: "",
+    country: "",
+    address: "",
+    mothersSurname: "",
+    codeword: "",
+    info: "",
+    friendsEmail: "",
   },
 };
 
@@ -19,10 +31,10 @@ const reducer = (state = initialState, action) => {
           [action.payload.page]: action.payload.boolean,
         },
       };
-    case SET_IS_OWN_DATA_DONE:
+    case SET_OWN_DATA:
       return {
         ...state,
-        isOwnDataDone: action.payload,
+        userOwnData: action.payload,
       };
     default:
       return state;

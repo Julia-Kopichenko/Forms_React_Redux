@@ -1,2 +1,2 @@
 export const SET_IS_AVAILABLE_PAGE = "SET_IS_AVAILABLE_PAGE";
-export const SET_IS_OWN_DATA_DONE = "SET_IS_OWN_DATA_DONE";
+export const SET_OWN_DATA = "SET_OWN_DATA";

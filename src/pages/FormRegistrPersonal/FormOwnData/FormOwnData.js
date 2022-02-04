@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setIsAvailablePage } from "../../../redux/actionCreators";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsAvailablePage, setOwnData } from "../../../redux/actionCreators";
 import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
@@ -14,7 +14,6 @@ import { PATH_NAME } from "../../../constants/pathNames";
 
 const FormOwnData = () => {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const validationSchema = yup.object().shape({
@@ -35,27 +34,13 @@ const FormOwnData = () => {
   return (
     <StyledFormOwnData>
       <Formik
-        initialValues={{
-          firstName: "",
-          lastName: "",
-          patronymic: "",
-          dateOfBirthday: "",
-          gender: "",
-          country: "",
-          address: "",
-          mothersSurname: "",
-          codeword: "",
-          info: "",
-          friendsEmail: "",
-        }}
+        initialValues={useSelector((store) => store.userOwnData)}
         validateOnBlur
         validationSchema={validationSchema}
-        // форма б-т валидироваться при переходе на след.поле (validateOnBlur)
-        // метод, кот.будет вызывать ф-цию во время отправки формы (onSubmit)
         onSubmit={(values) => {
-          dispatch(setIsAvailablePage('creditCardDataPage', true))
-          console.log(values);
-          navigate(PATH_NAME.registration_personal_card)
+          dispatch(setIsAvailablePage("creditCardDataPage", true));
+          dispatch(setOwnData(values));
+          navigate(PATH_NAME.registration_personal_card);
         }}>
         {({
           values,
@@ -80,11 +65,7 @@ const FormOwnData = () => {
 
               <hr />
 
-              <Button
-                type="submit"
-                onClick={handleSubmit}
-                // disabled={!isValid && !dirty}
-                >
+              <Button type="submit" onClick={handleSubmit}>
                 Далее
               </Button>
             </Form>
