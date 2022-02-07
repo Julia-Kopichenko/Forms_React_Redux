@@ -1,18 +1,16 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { Flex } from "../Flex";
-import { Label } from "./Label";
 import { Field } from "formik";
+
+const InputWrapper = styled.div`
+  position: relative;
+`;
 
 const ErrorText = styled.div`
   font-size: 12px;
   color: ${({ theme }) => theme.colorError};
   position: absolute;
   top: -15px;
-`;
-
-const InputWrapper = styled.div`
-  position: relative;
 `;
 
 const StyledInput = styled.input`
@@ -60,6 +58,7 @@ const StyledInput = styled.input`
 `;
 
 const MyInput = ({ form: { touched, errors }, field, ...props }) => {
+
   return (
     <>
       {touched[field.name] && errors[field.name] && (
@@ -75,13 +74,12 @@ const MyInput = ({ form: { touched, errors }, field, ...props }) => {
   );
 };
 
-export const MyTextInput = ({ name, label }) => {
+export const TextField = ({ name }) => {
+
   return (
-    <Flex justify="space-between" margin="0 0 25px 0">
-      <Label htmlFor={name}>{label}</Label>
-      <InputWrapper>
-        <Field name={name} component={MyInput} />
-      </InputWrapper>
-    </Flex>
+    <InputWrapper>
+      <Field name={name} component={MyInput} />
+    </InputWrapper>
   );
 };
+

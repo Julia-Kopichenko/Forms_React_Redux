@@ -1,14 +1,13 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 
 import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
 import { Button } from "../../../components/Forms/Button";
-import { MyTextInput } from "../../../components/Forms/TextInput";
+import { TextField } from "../../../components/Forms/TextInput";
 import { Text } from "../../../components/Typography/Typography";
 import { Flex } from "../../../components/Flex";
 import { PATH_NAME } from "../../../constants/pathNames";
@@ -52,7 +51,7 @@ const FormCreditCard = () => {
         // форма б-т валидироваться при переходе на след.поле (validateOnBlur)
         // метод, кот.будет вызывать ф-цию во время отправки формы (onSubmit)
         onSubmit={(values) => {
-          navigate(PATH_NAME.registration_personal_card)
+          navigate(PATH_NAME.registration_personal_card);
         }}>
         {({
           values,
@@ -70,7 +69,7 @@ const FormCreditCard = () => {
                 Все поля формы обязательны для заполнения!!!
               </Text>
               <Flex direction="column" width="87%">
-                <MyTextInput name="firstName" label="Имя:"></MyTextInput>
+                <TextField name="firstName" label="Имя:"></TextField>
               </Flex>
 
               <hr />
@@ -79,7 +78,7 @@ const FormCreditCard = () => {
                 type="submit"
                 onClick={handleSubmit}
                 // disabled={!isValid && !dirty}
-                >
+              >
                 Далее
               </Button>
             </Form>

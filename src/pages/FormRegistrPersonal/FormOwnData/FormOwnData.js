@@ -7,10 +7,14 @@ import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
 import { Button } from "../../../components/Forms/Button";
-import { MyTextInput } from "../../../components/Forms/TextInput";
+import { Label } from "../../../components/Forms/Label";
+import { TextField } from "../../../components/Forms/TextInput";
 import { Text } from "../../../components/Typography/Typography";
 import { Flex } from "../../../components/Flex";
 import { PATH_NAME } from "../../../constants/pathNames";
+
+import DatePickerField from "../../../components/Forms/DatePicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const FormOwnData = () => {
   const dispatch = useDispatch();
@@ -28,6 +32,10 @@ const FormOwnData = () => {
     patronymic: yup
       .string()
       .typeError("Должно быть строкой")
+      .required("Заполните это поле"),
+    dateOfBirthday: yup
+      .date()
+      .typeError("Должно быть дата")
       .required("Заполните это поле"),
   });
 
@@ -58,9 +66,24 @@ const FormOwnData = () => {
                 Все поля формы обязательны для заполнения!!!
               </Text>
               <Flex direction="column" width="87%">
-                <MyTextInput name="firstName" label="Имя:"></MyTextInput>
-                <MyTextInput name="lastName" label="Фамилия:"></MyTextInput>
-                <MyTextInput name="patronymic" label="Отчество:"></MyTextInput>
+                <FieldWrapper>
+                  <Label htmlFor="firstName">Имя:</Label>
+                  <TextField name="firstName"></TextField>
+                </FieldWrapper>
+                <FieldWrapper>
+                  <Label htmlFor="lastName">Фамилия:</Label>
+                  <TextField name="lastName"></TextField>
+                </FieldWrapper>
+                <FieldWrapper>
+                  <Label htmlFor="patronymic">Отчество:</Label>
+                  <TextField name="patronymic"></TextField>
+                </FieldWrapper>
+                <FieldWrapper>
+                  <Label htmlFor="dateOfBirthday">Дата рождения:</Label>
+                  <DatePickerField name="dateOfBirthday"></DatePickerField>
+                </FieldWrapper>
+
+                {/* <TextField name="firstName" label="Имя:"></TextField> */}
               </Flex>
 
               <hr />
@@ -83,6 +106,13 @@ const StyledFormOwnData = styled.div`
     margin-top: 20px;
     margin-left: 275px;
   }
+`;
+const FieldWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
 `;
 
 // const StyledInput = styled.input`
