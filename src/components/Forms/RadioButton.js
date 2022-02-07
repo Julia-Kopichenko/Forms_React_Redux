@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useField } from "formik";
 
 const RadioButton = (props) => {
-  const { label, name, value, ...rest } = props;
+  const { label, name, value } = props;
   const [field] = useField(props);
 
   return (
@@ -30,6 +30,7 @@ const RadioButtonLabel = styled.div`
   position: relative;
   padding: 0 0 0 25px;
   cursor: pointer;
+  color: ${({ theme }) => theme.colorGrey};
 
   &:before {
     content: "";

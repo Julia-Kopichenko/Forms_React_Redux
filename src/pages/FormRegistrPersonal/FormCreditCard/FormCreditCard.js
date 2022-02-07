@@ -7,7 +7,7 @@ import * as yup from "yup";
 // import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
 import { Button } from "../../../components/Forms/Button";
-import { TextField } from "../../../components/Forms/TextInput";
+import { MyTextInput } from "../../../components/Forms/TextInput";
 import { Text } from "../../../components/Typography/Typography";
 import { Flex } from "../../../components/Flex";
 import { PATH_NAME } from "../../../constants/pathNames";
@@ -69,7 +69,7 @@ const FormCreditCard = () => {
                 Все поля формы обязательны для заполнения!!!
               </Text>
               <Flex direction="column" width="87%">
-                <TextField name="firstName" label="Имя:"></TextField>
+                {/* <TextField name="firstName" label="Имя:"></TextField> */}
               </Flex>
 
               <hr />

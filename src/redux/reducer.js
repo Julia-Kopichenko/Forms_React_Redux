@@ -11,7 +11,7 @@ const initialState = {
     lastName: "",
     patronymic: "",
     dateOfBirthday: "",
-    gender: "",
+    gender: "male",
     country: "",
     address: "",
     mothersSurname: "",

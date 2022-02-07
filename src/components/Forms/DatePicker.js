@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useField, useFormikContext } from "formik";
-import styled, { css } from "styled-components";
+import { ErrorText } from "./ErrorText";
 
 import Datepicker from "react-datepicker";
-
+import { StyledInput } from "./StyledInputField";
 import es from "date-fns/locale/es";
 import en from "date-fns/locale/en-GB";
 
@@ -49,73 +49,10 @@ const customHeader = ({ locale, date, changeMonth, changeYear }) => {
   );
 };
 
-
-const InputWrapper = styled.div`
-  position: relative;
-`;
-
-const ErrorText = styled.div`
-  font-size: 12px;
-  color: ${({ theme }) => theme.colorError};
-  position: absolute;
-  top: -15px;
-`;
-
-const StyledInput = styled.input`
-  display: block;
-  width: 380px;
-  height: 28px;
-  border: 1px solid ${({ theme }) => theme.colorGreyLight};
-  background-color: ${({ theme }) => theme.colorWhite};
-  border-radius: 2px;
-  font-size: 16px;
-  padding: 0 10px;
-
-  &:focus,
-  &:active {
-    box-shadow: rgb(210, 213, 217) 0 0 1px 1px, rgb(227, 230, 232) 0 0 0 2px;
-    border: 1px solid ${({ theme }) => theme.colorGreyLight};
-    outline: none;
-  }
-
-  ${({ valid }) =>
-    valid &&
-    css`
-      border: 1px solid ${({ theme }) => theme.colorGreen};
-      &:focus,
-      &:active {
-        border: 1px solid ${({ theme }) => theme.colorGreen};
-        box-shadow: ${({ theme }) => theme.colorGreen} 0 0 2px 1px,
-          rgb(177, 247, 160) 0 0 0 2px;
-        outline: none;
-      }
-    `}
-
-  ${({ error }) =>
-    error &&
-    css`
-      border: 1px solid ${({ theme }) => theme.colorError};
-      outline: none;
-
-      &:focus,
-      &:active {
-        box-shadow: rgb(244, 129, 116) 0 0 2px 1px, rgb(251, 178, 174) 0 0 0 3px;
-        outline: none;
-      }
-    `}
-`;
-
-const MyInput = ({
-  touched,
-  error,
-  field,
-  ...props
-}) => {
+const MyInput = ({ touched, error, field, ...props }) => {
   return (
     <>
-      {touched && error && (
-        <ErrorText>{error}</ErrorText>
-      )}
+      {touched && error && <ErrorText>{error}</ErrorText>}
       <StyledInput
         {...field}
         {...props}
@@ -132,20 +69,18 @@ function DatePickerField({ ...props }) {
   const [locale, setLocale] = useState("en");
 
   return (
-    <div>
-      <Datepicker
-        {...field}
-        {...props}
-        selected={(field.value && new Date(field.value)) || null}
-        placeholderText="mm/dd/yyyy"
-        onChange={(val) => {
-          setFieldValue(field.name, val);
-        }}
-        renderCustomHeader={(props) => customHeader({ ...props, locale })}
-        locale={locales[locale]}
-        customInput={<MyInput {...form} field={field} {...props} />}
-      />
-    </div>
+    <Datepicker
+      {...field}
+      {...props}
+      selected={(field.value && new Date(field.value)) || null}
+      placeholderText="mm/dd/yyyy"
+      onChange={(val) => {
+        setFieldValue(field.name, val);
+      }}
+      renderCustomHeader={(props) => customHeader({ ...props, locale })}
+      locale={locales[locale]}
+      customInput={<MyInput {...form} field={field} {...props} />}
+    />
   );
 }
 export default DatePickerField;

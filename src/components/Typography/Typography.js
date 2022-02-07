@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Text = styled.p`
   font-size: ${(props) => props.fontSize || "14px"};
+  font-style: ${(props) => props.fontStyle || "normal"};
   color: ${(props) => props.color || "#616362"};
   margin: ${({ margin }) => margin || "0"};
 `;

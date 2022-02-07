@@ -1,20 +1,22 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
+import { Field } from "formik";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsAvailablePage, setOwnData } from "../../../redux/actionCreators";
 import * as yup from "yup";
-// import RadioButton from "../../../components/RadioButton";
 import styled from "styled-components";
-import { Button } from "../../../components/Forms/Button";
-import { Label } from "../../../components/Forms/Label";
-import { TextField } from "../../../components/Forms/TextInput";
-import { Text } from "../../../components/Typography/Typography";
-import { Flex } from "../../../components/Flex";
 import { PATH_NAME } from "../../../constants/pathNames";
 
+import { Flex } from "../../../components/Flex";
+import { Text } from "../../../components/Typography/Typography";
+import { Button } from "../../../components/Forms/Button";
+import { Label } from "../../../components/Forms/Label";
+import { MyTextInput } from "../../../components/Forms/TextInput";
+import { MyTextarea } from "../../../components/Forms/Textarea";
 import DatePickerField from "../../../components/Forms/DatePicker";
-import "react-datepicker/dist/react-datepicker.css";
+import RadioButton from "../../../components/Forms/RadioButton";
 
 const FormOwnData = () => {
   const dispatch = useDispatch();
@@ -33,10 +35,30 @@ const FormOwnData = () => {
       .string()
       .typeError("Должно быть строкой")
       .required("Заполните это поле"),
+    address: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Заполните это поле"),
+    mothersSurname: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Заполните это поле"),
+    codeword: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Заполните это поле"),
+    info: yup
+      .string()
+      .typeError("Должно быть строкой")
+      .required("Заполните это поле"),
     dateOfBirthday: yup
       .date()
       .typeError("Должно быть дата")
       .required("Заполните это поле"),
+      friendsEmail: yup
+      .string()
+      .email('Невалидный email адрес')
+      .required('Заполните это поле'),
   });
 
   return (
@@ -65,26 +87,87 @@ const FormOwnData = () => {
               <Text fontSize="12px" margin="0 0 25px 0">
                 Все поля формы обязательны для заполнения!!!
               </Text>
-              <Flex direction="column" width="87%">
-                <FieldWrapper>
-                  <Label htmlFor="firstName">Имя:</Label>
-                  <TextField name="firstName"></TextField>
-                </FieldWrapper>
-                <FieldWrapper>
-                  <Label htmlFor="lastName">Фамилия:</Label>
-                  <TextField name="lastName"></TextField>
-                </FieldWrapper>
-                <FieldWrapper>
-                  <Label htmlFor="patronymic">Отчество:</Label>
-                  <TextField name="patronymic"></TextField>
-                </FieldWrapper>
-                <FieldWrapper>
-                  <Label htmlFor="dateOfBirthday">Дата рождения:</Label>
-                  <DatePickerField name="dateOfBirthday"></DatePickerField>
-                </FieldWrapper>
-
-                {/* <TextField name="firstName" label="Имя:"></TextField> */}
-              </Flex>
+              {/*------------- ИМЯ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="firstName">Имя:</Label>
+                <InputWrapper>
+                  <Field name="firstName" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- ФАМИЛИЯ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="lastName">Фамилия:</Label>
+                <InputWrapper>
+                  <Field name="lastName" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- ОТЧЕСТВО----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="patronymic">Отчество:</Label>
+                <InputWrapper>
+                  <Field name="patronymic" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- ДАТА РОЖДЕНИЯ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="dateOfBirthday">Дата рождения:</Label>
+                <InputWrapper>
+                  <DatePickerField name="dateOfBirthday" />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- ПОЛ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="dateOfBirthday">Пол:</Label>
+                <InputWrapper>
+                  <RadioButtonWrapper>
+                    <RadioButton value="male" label="Мужской" name="gender" />
+                    <RadioButton value="female" label="Женский" name="gender" />
+                  </RadioButtonWrapper>
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- АДРЕС----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="address">Адрес. Почтовый индекс:</Label>
+                <InputWrapper>
+                  <Field name="address" component={MyTextInput} />
+                </InputWrapper>
+                <TextWrapper>
+                  <Text fontSize="10px" fontStyle="italic" >
+                    Узнать индекс
+                  </Text>
+                </TextWrapper>
+              </FieldWrapper>
+              {/*------------- ДЕВИЧЬЯ ФАМИЛИЯ МАТЕРИ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="mothersSurname">Девичья фамилия матери:</Label>
+                <InputWrapper>
+                  <Field name="mothersSurname" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- КОДОВОЕ СЛОВО----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="codeword">Кодовое слово в вашем банке:</Label>
+                <InputWrapper>
+                  <Field name="codeword" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
+              {/*------------- КАК ВЫ УЗНАЛИ О БАНКЕ----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="info">Как вы узнали о нашем сайте:</Label>
+                <InputWrapper>
+                  <Field name="info" component={MyTextarea} />
+                </InputWrapper>
+                <TextWrapper>
+                  <Text fontSize="10px" fontStyle="italic">Из газет, телевидения и пр.</Text>
+                </TextWrapper>
+              </FieldWrapper>
+              {/*------------- EMAIL----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="friendsEmail">Email друга:</Label>
+                <InputWrapper>
+                  <Field name="friendsEmail" component={MyTextInput} />
+                </InputWrapper>
+              </FieldWrapper>
 
               <hr />
 
@@ -107,12 +190,38 @@ const StyledFormOwnData = styled.div`
     margin-left: 275px;
   }
 `;
+const InputWrapper = styled.div`
+  position: relative;
+`;
+const TextWrapper = styled.div``;
 const FieldWrapper = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: start;
   margin-bottom: 25px;
+  ${Label} {
+    flex-basis: 33%;
+    padding: 7px 15px 7px 0;
+  }
+  ${InputWrapper} {
+    flex-basis: 50%;
+    margin-right: 30px;
+    & .react-datepicker__input-container {
+      width: 30%;
+    }
+  }
+  ${TextWrapper} {
+    flex-basis: 0;
+  }
+`;
+
+const RadioButtonWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  & > * {
+    margin-right: 20px;
+  }
 `;
 
 // const StyledInput = styled.input`
