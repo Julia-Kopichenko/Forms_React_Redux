@@ -58,6 +58,7 @@ const MyInput = ({ touched, error, field, ...props }) => {
         {...props}
         valid={touched && !error}
         error={touched && error}
+        autoComplete="off"
       />
     </>
   );

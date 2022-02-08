@@ -18,6 +18,39 @@ import { MyTextarea } from "../../../components/Forms/Textarea";
 import DatePickerField from "../../../components/Forms/DatePicker";
 import RadioButton from "../../../components/Forms/RadioButton";
 
+const MyField = (props) => {
+  const {
+    values: { textA, textB },
+    touched,
+    setFieldValue,
+  } = useFormikContext();
+  const [field, meta] = useField(props);
+
+  React.useEffect(() => {
+    // set the value of textC, based on textA and textB
+    if (
+      textA.trim() !== "" &&
+      textB.trim() !== "" &&
+      touched.textA &&
+      touched.textB
+    ) {
+      setFieldValue(props.name, `textA: ${textA}, textB: ${textB}`);
+    }
+  }, [textB, textA, touched.textA, touched.textB, setFieldValue, props.name]);
+
+  return (
+    <>
+      <input {...props} {...field} />
+      {!!meta.touched && !!meta.error && <div>{meta.error}</div>}
+    </>
+  );
+};
+
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const phoneBelRegExp =
+  /^\s*\+?375((33\d{7})|(29\d{7})|(44\d{7}|)|(25\d{7}))\s*$/;
+
 const FormOwnData = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,10 +88,14 @@ const FormOwnData = () => {
       .date()
       .typeError("Должно быть дата")
       .required("Заполните это поле"),
-      friendsEmail: yup
+    friendsEmail: yup
       .string()
-      .email('Невалидный email адрес')
-      .required('Заполните это поле'),
+      .email("Невалидный email адрес")
+      .required("Заполните это поле"),
+    phoneNumber: yup
+      .string()
+      .matches(phoneBelRegExp, "Невалидный номер телефона")
+      .required("Заполните это поле"),
   });
 
   return (
@@ -82,6 +119,9 @@ const FormOwnData = () => {
           handleSubmit,
           dirty,
         }) => {
+          {
+            console.log(values.gender);
+          }
           return (
             <Form>
               <Text fontSize="12px" margin="0 0 25px 0">
@@ -132,7 +172,7 @@ const FormOwnData = () => {
                   <Field name="address" component={MyTextInput} />
                 </InputWrapper>
                 <TextWrapper>
-                  <Text fontSize="10px" fontStyle="italic" >
+                  <Text fontSize="10px" fontStyle="italic">
                     Узнать индекс
                   </Text>
                 </TextWrapper>
@@ -158,7 +198,9 @@ const FormOwnData = () => {
                   <Field name="info" component={MyTextarea} />
                 </InputWrapper>
                 <TextWrapper>
-                  <Text fontSize="10px" fontStyle="italic">Из газет, телевидения и пр.</Text>
+                  <Text fontSize="10px" fontStyle="italic">
+                    Из газет, телевидения и пр.
+                  </Text>
                 </TextWrapper>
               </FieldWrapper>
               {/*------------- EMAIL----------------- */}
@@ -168,7 +210,25 @@ const FormOwnData = () => {
                   <Field name="friendsEmail" component={MyTextInput} />
                 </InputWrapper>
               </FieldWrapper>
-
+              {/*------------- НОМЕР ТЕЛЕФОНА----------------- */}
+              <FieldWrapper>
+                <Label htmlFor="phoneNumber">
+                  {values.gender === "male" && "Номер телефона своей девушки: "}
+                  {values.gender === "female" &&
+                    "Номер телефона своего парня: "}
+                </Label>
+                <InputWrapper>
+                  <Field name="phoneNumber" component={MyTextInput} />
+                </InputWrapper>
+                <TextWrapper>
+                  <Text fontSize="10px" fontStyle="italic">
+                    {values.gender === "male" && "Только белорусские номера"}
+                    {values.gender === "female" && "Международный"}
+                  </Text>
+                </TextWrapper>
+              </FieldWrapper>
+              {/*------------- СКОВОРОДА/ФУТБОЛЬНАЯ КОМАНДА----------------- */}
+              
               <hr />
 
               <Button type="submit" onClick={handleSubmit}>
@@ -183,7 +243,11 @@ const FormOwnData = () => {
 };
 
 export default FormOwnData;
+// male ==> Номер телефона своей девушки, интересуют только белорусские номера (валидация)
+// male ==> За какую футбольную команду болеешь (дропдаун с фильтром)
 
+// female ==> Номер телефона своего парня в международном формате (валидация). Если номер не белорусский - следующее поле делаем disable, автоматом выбираем tefal
+// female ==> Сковороду какой фирмы предпочитаешь (дропдаун с фильтром)
 const StyledFormOwnData = styled.div`
   ${Button} {
     margin-top: 20px;

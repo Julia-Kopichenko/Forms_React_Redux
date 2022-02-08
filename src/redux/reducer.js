@@ -18,6 +18,7 @@ const initialState = {
     codeword: "",
     info: "",
     friendsEmail: "",
+    phoneNumber: "",
   },
 };
 
